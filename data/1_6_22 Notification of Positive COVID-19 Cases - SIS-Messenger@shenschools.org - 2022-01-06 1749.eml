@@ -1,0 +1,278 @@
+Delivered-To: bill.a.hoffman@gmail.com
+Received: by 2002:a05:6a10:1b94:0:0:0:0 with SMTP id ph20csp1976313pxb;
+        Thu, 6 Jan 2022 14:50:04 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyrGXCDAIGkjLRXo6MdXdkhOmry+rw6LofchjxodDqFo6oupa3wRt5tPQNkIdEmkwiznK31
+X-Received: by 2002:a92:ca46:: with SMTP id q6mr31407723ilo.107.1641509404520;
+        Thu, 06 Jan 2022 14:50:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641509404; cv=none;
+        d=google.com; s=arc-20160816;
+        b=POuvm4KxBjafHtKwVxFzb9ntEZ5Bpb70pC6LuKz7JTR7/v1S5+oKyKfXoVyQpLtQO+
+         pJDv73NLbE5oEQMUQ8La1/Q6FnZGNVtYV7RybgLzFFEb9oBIxAsj2j2vQA1Hm29mSODF
+         PYM96ew2dBeBrhS/zrGKuaG//Q2bWcIfZJvGlnSYjPyPLK1bSeljeGTkrZ3g1sUGqFkX
+         KHECmxEh+12rian9QcH5svSVQIfP7i7hlmkDGB9wmg2xpQqrDd7QUfCMbyU/fQaLGFPa
+         r4ffW8ZDyhtI6Jf+7Fv5OJxkaEodNE2/0ciNi4WGQNbo+julEqa/N+0p9yxbxwAjIEs2
+         KYEg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to
+         :reply-to:from:date;
+        bh=Yt9KK6vDHCrXJrVeebLbhpj73ybo8HbN9YhRLbIVjnk=;
+        b=HEIDX8/TkAQbLB+YBZkRa+cKCLHoT+NVrIMCMxmAvvCyEF6h5zjH8W7dpAzrJHrl0a
+         ACt5xQUceAkijqmMMJ0vGXOcSBLL9q1eMdL4FwV3N5gBQbnnhF50kK94vNRzADsDl3N3
+         Cd0ki1fU9rYG6qqVX7TJn0EwtbeU1SO9tWNCVd4/Lj3/lQ9Pq4KYmrNhMFjeosaiBxJ6
+         yelt99HqrumTdYQw32QRcKiXdRiA+xQpnRsEso6EKxZiM5w1kb9oTrQpNFQAaSg9IZMk
+         WC333jqnMvecx3dIZpab3QoMv9vSoWJonQRxpT721lXUtpWRpndyg1mif1ajTWIIy5v7
+         eDqQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=fail (google.com: domain of sis-messenger@shenschools.org does not designate 47.43.26.170 as permitted sender) smtp.mailfrom=sis-messenger@shenschools.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=shenschools.org
+Return-Path: <sis-messenger@shenschools.org>
+Received: from p-impout005fwd.msg.pkvw.co.charter.net (p-impout005fwd.msg.pkvw.co.charter.net. [47.43.26.170])
+        by mx.google.com with ESMTPS id w6si444248iod.38.2022.01.06.14.50.04
+        for <bill.a.hoffman@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 06 Jan 2022 14:50:04 -0800 (PST)
+Received-SPF: fail (google.com: domain of sis-messenger@shenschools.org does not designate 47.43.26.170 as permitted sender) client-ip=47.43.26.170;
+Authentication-Results: mx.google.com;
+       spf=fail (google.com: domain of sis-messenger@shenschools.org does not designate 47.43.26.170 as permitted sender) smtp.mailfrom=sis-messenger@shenschools.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=shenschools.org
+Received: from p-mtain007.msg.pkvw.co.charter.net ([47.43.24.112])
+	by cmsmtp with ESMTP
+	id 5ba8nFw5PM0uW5ba8n05MT; Thu, 06 Jan 2022 22:50:04 +0000
+X-Authority-Analysis: v=2.4 cv=AY2iolbG c=1 sm=1 tr=0 ts=61d7721c
+ a=ePoqDJuuWPh9fMEkoYWnZA==:117 a=5eI6GpJtsBCwaIVGnCY7Ww==:17
+ a=IkcTkHD0fZMA:10 a=DghFqjY3_ZEA:10 a=qVzpKRhN2riTzcA-HOkA:9
+ a=yxc6xu1qAfkKxqjX:21 a=_W_S_7VecoQA:10 a=QEXdDO2ut3YA:10
+Received: from p-impin006.msg.pkvw.co.charter.net ([47.43.26.147])
+          by p-mtain007.msg.pkvw.co.charter.net
+          (InterMail vM.9.01.00.037.1 201-2473-137-122-172) with ESMTP
+          id <20220106225004.YUHN30123.p-mtain007.msg.pkvw.co.charter.net@p-impin006.msg.pkvw.co.charter.net>
+          for <whoffman@nycap.rr.com>; Thu, 6 Jan 2022 22:50:04 +0000
+Received: from shen-barracuda.shenet.org ([173.243.160.20])
+	by cmsmtp with ESMTP
+	id 5ba7n5cNSnMjZ5ba7nErYH; Thu, 06 Jan 2022 22:50:04 +0000
+X-ORIG-RCPT: whoffman@nycap.rr.com
+X-Authority-Analysis: v=2.4 cv=RMqgoqu+ c=1 sm=1 tr=0 ts=61d7721c cx=a_idp_d
+ a=5eI6GpJtsBCwaIVGnCY7Ww==:117 a=5eI6GpJtsBCwaIVGnCY7Ww==:17
+ a=IkcTkHD0fZMA:10 a=DghFqjY3_ZEA:10 a=qVzpKRhN2riTzcA-HOkA:9
+ a=yxc6xu1qAfkKxqjX:21 a=_W_S_7VecoQA:10 a=QEXdDO2ut3YA:10
+X-ASG-Debug-ID: 1641509345-10620e18a8bc9b80001-kaaYZ2
+Received: from d133ny-app002 (shen-sisapp02.shenet.local [10.250.15.212]) by shen-barracuda.shenet.org with ESMTP id ZyMC3xSAeaQz9ZsD for <whoffman@nycap.rr.com>; Thu, 06 Jan 2022 17:49:05 -0500 (EST)
+X-Barracuda-Envelope-From: SIS-Messenger@shenschools.org
+X-ASG-Whitelist: Sender
+X-Barracuda-RBL-Trusted-Forwarder: 10.250.15.212
+Date: Thu, 6 Jan 2022 17:49:05 -0500 (EST)
+From: SIS-Messenger@shenschools.org
+Reply-To: SIS-Messenger@shenschools.org
+To: whoffman@nycap.rr.com
+Message-ID: <160512832.255650.1641509345885.JavaMail.D133NY-APP002$@d133ny-app002>
+Subject: 1/6/22 Notification of Positive COVID-19 Cases
+MIME-Version: 1.0
+X-ASG-Orig-Subj: 1/6/22 Notification of Positive COVID-19 Cases
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Barracuda-Connect: shen-sisapp02.shenet.local[10.250.15.212]
+X-Barracuda-Start-Time: 1641509345
+X-Barracuda-URL: https://shenspamblock.shenet.org:443/cgi-mod/mark.cgi
+X-Barracuda-BRTS-Status: 1
+X-Virus-Scanned: by bsmtpd at shenet.org
+X-Barracuda-Scan-Msg-Size: 6604
+X-CMAE-Envelope: MS4xfFwh41YC0/FqABCR0Pfcwu/t9SCMzf6KFXgtfieaLp7g9WAcJ6uWRRcw6CFt3+vGs/RCEOmUUqF/y3c6e8CuMy3jwJrsNGNaVReb4CG2KAhana4XSY8W
+ LXItjm1M6v27c/3gZI493h/3GnSJv2EUF9UcAub/yAbpLnLYxT/XTQq/y7ka1in6PZ7gkZRvg8antd9gSCc5rxYqCvYoUWC88Zt/r9wBg2leaaWP3tV17Ltf
+
+<html><style>
+body
+{
+	font-family: Arial, Verdana, Sans-Serif;
+	font-size: 16px;
+	padding: 5px 5px 5px 5px;
+	margin: 0px;
+	border-style: none;
+	background-color: #ffffff;
+}
+P, UL, LI
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style><body><p>&nbsp;</p>
+<center><font face="arial" color="#0000ff"><big><big><em><strong>Campus Messenger</strong></em></big></big></font><font face="arial" color="#000000"><big><strong> by Infinite Campus</strong></big></font></center>
+<p>&nbsp;</p>
+<hr /><style> 
+ ol {list-style-type: decimal}
+ ol ol {list-style-type: lower-alpha}
+ ol ol ol {list-style-type: lower-roman}
+ ul {list-style-type: disc}
+ ul ul {list-style-type: circle}
+ ul ul ul {list-style-type: square}
+ td, th, table {border: 1px solid black}
+ table {border-collapse: collapse}
+</style><p>January 6, 2022</p>
+<p>The purpose of this communication is to inform you that the
+Saratoga County Public Health Department notified that individuals
+associated with the District tested positive for COVID-19. The
+positive COVID-19 reported cases are as follows:
+<br/></p>
+<ul>
+  <li>
+    <strong>Two individuals associated with Acadia Middle School
+    whose last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>Two individuals associated with Acadia Middle School
+    whose last day on site was 12/21/21</strong>
+  </li>
+  <li>
+    <strong>Two individuals associated with Acadia Middle School
+    whose last day on site was 1/5/22</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Acadia Middle School
+    whose last day on site was 1/3/22</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Arongen Elementary whose
+    last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>Two individuals associated with Chango Elementary whose
+    last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>Seven individuals associated with Gowana Middle School
+    whose last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Gowana Middle School
+    whose last day on site was 12/22/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Gowana Middle School
+    whose last day on site was 1/3/22</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Gowana Middle School
+    whose last day on site was 1/5/22</strong>
+  </li>
+  <li>
+    <strong>Two individuals associated with Karigon Elementary
+    whose last day on site was 1/5/22</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Karigon Elementary whose
+    last day on site was 12/22/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Koda Middle School whose
+    last day on site was 12/22/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Koda Middle School whose
+    last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Koda Middle School whose
+    last day on site was 1/5/22</strong>
+  </li>
+  <li>
+    <strong>Three individuals associated with Koda Middle School
+    whose last day on site was 1/3/22</strong>
+  </li>
+  <li>
+    <strong>Two individuals associated with Okte Elementary whose
+    last day on site was 1/5/22</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Okte Elementary whose
+    last day on site was 1/3/22</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Okte Elementary whose
+    last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Orenda Elementary whose
+    last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>Two individuals associated with Orenda Elementary whose
+    last day on site was 1/5/22</strong>
+  </li>
+  <li>
+    <strong>Four individuals associated with Shatekon Elementary
+    whose last day on site was 1/5/22</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Shatekon Elementary whose
+    last day on site was 1/6/22</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Shatekon Elementary whose
+    last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>Seven individuals associated with High School East
+    whose last day on site was 1/3/22</strong>
+  </li>
+  <li>
+    <strong>Three individuals associated with High School East
+    whose last day on site was 1/4/22</strong>
+  </li>
+  <li>
+    <strong>Four individuals associated with High School East whose
+    last day on site was 1/6/22</strong>
+  </li>
+  <li>
+    <strong>Eight individuals associated with High School East
+    whose last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>Three individuals associated with High School West
+    whose last day on site was 1/3/22</strong>
+  </li>
+  <li>
+    <strong>Two individuals associated with High School West whose
+    last day on site was 1/4/22</strong>
+  </li>
+  <li>
+    <strong>Four individuals associated with High School West whose
+    last day on site was 1/5/22</strong>
+  </li>
+  <li>
+    <strong>An individual associated with High School West whose
+    last day on site was 12/21/21</strong>
+  </li>
+  <li>
+    <strong>Two individuals associated with High School West whose
+    last day on site was 12/22/21</strong>
+  </li>
+  <li>
+    <strong>Four individuals associated with High School West whose
+    last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Skano Elementary whose
+    last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Skano Elementary whose
+    last day on site was 12/22/21</strong>
+  </li>
+  <li>
+    <strong>Four individuals associated with Tesago Elementary
+    whose last day on site was 12/23/21</strong>
+  </li>
+  <li>
+    <strong>Two individuals associated with Tesago Elementary whose
+    last day on site was 1/5/22</strong>
+  </li>
+</ul>
+<p>We appreciate the support of parents, staff and our students as
+we work hard continuing to put COVID in the rearview mirror. We
+encourage parents to get students vaccinated and will help
+facilitate opportunities to do so.</p>
+<p>Thank you again for your commitment to keeping our community
+safe.</p>
+<hr />
+<p>&nbsp;</p>
+<center><font face="arial" color="#000000" size="1">Please do not respond via the email client Reply button. Your response to the Campus Notification will not be delivered to the person who originated this message</font></center>
+<p>&nbsp;</p></body></html>

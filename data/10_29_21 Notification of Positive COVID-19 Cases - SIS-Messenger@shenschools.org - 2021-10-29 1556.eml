@@ -1,0 +1,157 @@
+Delivered-To: bill.a.hoffman@gmail.com
+Received: by 2002:a5e:a506:0:0:0:0:0 with SMTP id 6csp865000iog;
+        Fri, 29 Oct 2021 12:56:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyn2Rqh6Zm9/YoYbSc2aoyUhh1k/Hw6xhBnJUVwQiSiqnq+EhUg3Si8tv9/Ffw7bGzkpkHO
+X-Received: by 2002:a02:cf26:: with SMTP id s6mr9811138jar.49.1635537417360;
+        Fri, 29 Oct 2021 12:56:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1635537417; cv=none;
+        d=google.com; s=arc-20160816;
+        b=sKMmNbq+KjTFz8z4rKXhrKyaDO3euk7b4JNB7KsRKLNkojuGF5w/EncSmu+Lc4zK56
+         Z4q9kFAMonrBOa9p9+osi3m/iMNsuTArp4ZHAWnqjbXLAl6rD6rEvcndUAlP/+2QrksZ
+         5oNd8q45X2AmkmwI2hUUxZ9JEKI2EbDzE/uLGiHF2tG17Ll9ooTyNmsKGdYbvSW6xm+y
+         XjptN7jKi7kIZrTfDVHWWI5bzrtaD6HzSSxW5D1C1PxZX373SROx0GBn4aLSeVz4DhSx
+         /Mwj0xoktpCzWAMmWEXGezyMpEI7+1ZQVTjw0ViGwVsCQ8FFjZCmip8EsbxliHvMpORJ
+         ILbw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:subject:message-id:to
+         :reply-to:from:date;
+        bh=HUN0LU/63DVg6SM5WH1g03w2yCeNELuoy2pZV0ekgvs=;
+        b=jft11/OnBtGQiJMPH6GuW7w51DlddNhM7iwlK/kQqcWgenuGVZG56rOau474OHVrDG
+         57MgMdtnV8Ip4TV433PnLH1py2OgnYVpCsSoUcUAif5Bo1gYKglr4yoILAwQ6sAcYkL3
+         N9oCQkFKEyU/j7VaT8lBp18w2yj5Zr7IFeLnEffX7V390zJ6+S4Zjphfumcwxl4fK5f/
+         8vp85khSOT//+19J8s+Rrul9WkhuwejYe1b/Ls3LdF/Kj8xpZHpY86nMrJrNrzJyVRTL
+         7o/6v6ciOBkqkz6K1Be+BlWVrzeJsegAdDNBzTmNhjIWZCbYojj1xt0e+3bhtZhLmPIg
+         dxRg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=fail (google.com: domain of sis-messenger@shenschools.org does not designate 47.43.26.168 as permitted sender) smtp.mailfrom=sis-messenger@shenschools.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=shenschools.org
+Return-Path: <sis-messenger@shenschools.org>
+Received: from p-impout003fwd.msg.pkvw.co.charter.net (p-impout003fwd.msg.pkvw.co.charter.net. [47.43.26.168])
+        by mx.google.com with ESMTPS id j14si10432651iow.54.2021.10.29.12.56.57
+        for <bill.a.hoffman@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 29 Oct 2021 12:56:57 -0700 (PDT)
+Received-SPF: fail (google.com: domain of sis-messenger@shenschools.org does not designate 47.43.26.168 as permitted sender) client-ip=47.43.26.168;
+Authentication-Results: mx.google.com;
+       spf=fail (google.com: domain of sis-messenger@shenschools.org does not designate 47.43.26.168 as permitted sender) smtp.mailfrom=sis-messenger@shenschools.org;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=shenschools.org
+Received: from p-mtain009.msg.pkvw.co.charter.net ([47.43.24.114])
+	by cmsmtp with ESMTP
+	id gXzlmXV8W1uscgXzlmFp91; Fri, 29 Oct 2021 19:56:57 +0000
+X-Authority-Analysis: v=2.4 cv=AtMrYMxP c=1 sm=1 tr=0 ts=617c5209
+ a=EIYso9V5w0gEWcrsWaD+0A==:117 a=5eI6GpJtsBCwaIVGnCY7Ww==:17
+ a=IkcTkHD0fZMA:10 a=8gfv0ekSlNoA:10 a=pMO1Bc6sxVOtuAZQPegA:9
+ a=C-QSbt3TWot37PyE:21 a=_W_S_7VecoQA:10 a=QEXdDO2ut3YA:10
+Received: from p-impin018.msg.pkvw.co.charter.net ([47.43.26.159])
+          by p-mtain009.msg.pkvw.co.charter.net
+          (InterMail vM.9.01.00.037.1 201-2473-137-122-172) with ESMTP
+          id <20211029195657.ZHKD3852.p-mtain009.msg.pkvw.co.charter.net@p-impin018.msg.pkvw.co.charter.net>
+          for <whoffman@nycap.rr.com>; Fri, 29 Oct 2021 19:56:57 +0000
+Received: from shen-barracuda.shenet.org ([173.243.160.20])
+	by cmsmtp with ESMTP
+	id gXzjmXtkH0cEFgXzkmpCFV; Fri, 29 Oct 2021 19:56:56 +0000
+X-ORIG-RCPT: whoffman@nycap.rr.com
+X-Authority-Analysis: v=2.4 cv=ZtYol/3G c=1 sm=1 tr=0 ts=617c5208 cx=a_idp_d
+ a=5eI6GpJtsBCwaIVGnCY7Ww==:117 a=5eI6GpJtsBCwaIVGnCY7Ww==:17
+ a=IkcTkHD0fZMA:10 a=8gfv0ekSlNoA:10 a=pMO1Bc6sxVOtuAZQPegA:9
+ a=C-QSbt3TWot37PyE:21 a=_W_S_7VecoQA:10 a=QEXdDO2ut3YA:10
+X-ASG-Debug-ID: 1635537401-10620e18a8c2730001-kaaYZ2
+Received: from d133ny-app002 (shen-sisapp02.shenet.local [10.250.15.212]) by shen-barracuda.shenet.org with ESMTP id Es69YIDyBM1DmlJM for <whoffman@nycap.rr.com>; Fri, 29 Oct 2021 15:56:41 -0400 (EDT)
+X-Barracuda-Envelope-From: SIS-Messenger@shenschools.org
+X-ASG-Whitelist: Sender
+X-Barracuda-RBL-Trusted-Forwarder: 10.250.15.212
+Date: Fri, 29 Oct 2021 15:56:41 -0400 (EDT)
+From: SIS-Messenger@shenschools.org
+Reply-To: SIS-Messenger@shenschools.org
+To: whoffman@nycap.rr.com
+Message-ID: <1455312903.62126.1635537401609.JavaMail.D133NY-APP002$@d133ny-app002>
+Subject: 10/29/21 Notification of Positive COVID-19 Cases
+MIME-Version: 1.0
+X-ASG-Orig-Subj: 10/29/21 Notification of Positive COVID-19 Cases
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Barracuda-Connect: shen-sisapp02.shenet.local[10.250.15.212]
+X-Barracuda-Start-Time: 1635537401
+X-Barracuda-URL: https://shenspamblock.shenet.org:443/cgi-mod/mark.cgi
+X-Barracuda-BRTS-Status: 1
+X-Virus-Scanned: by bsmtpd at shenet.org
+X-Barracuda-Scan-Msg-Size: 2733
+X-CMAE-Envelope: MS4xfNXohSdHRC3y3yE4AHX1SeDzRX0J6iu8rbANoSN5jiU5IKlvajorfrfqMAocbzSLs+CmDxJ4qrv1gRy3xoRzxuJ/6nwjIfn/BGnv2sgESCz7HVN13S08
+ fkYJwefBdqkAl6oofyYGmzOorwyNLCsNnu7r9BUhJx39kmO6A1NEX+L3NvMJksaV041mrT5BTMFDq0E1nYoj2q3ToF5QVc6cFY/fp8LNk2Rf0CwziCVQSJlr
+
+<html><style>
+body
+{
+	font-family: Arial, Verdana, Sans-Serif;
+	font-size: 16px;
+	padding: 5px 5px 5px 5px;
+	margin: 0px;
+	border-style: none;
+	background-color: #ffffff;
+}
+P, UL, LI
+{
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style><body><p>&nbsp;</p>
+<center><font face="arial" color="#0000ff"><big><big><em><strong>Campus Messenger</strong></em></big></big></font><font face="arial" color="#000000"><big><strong> by Infinite Campus</strong></big></font></center>
+<p>&nbsp;</p>
+<hr /><style> 
+ ol {list-style-type: decimal}
+ ol ol {list-style-type: lower-alpha}
+ ol ol ol {list-style-type: lower-roman}
+ ul {list-style-type: disc}
+ ul ul {list-style-type: circle}
+ ul ul ul {list-style-type: square}
+ td, th, table {border: 1px solid black}
+ table {border-collapse: collapse}
+</style><p>October 29, 2021</p>
+<p>The purpose of this communication is to inform you that the
+Saratoga County Public Health Department notified that individuals
+associated with the District tested positive for COVID-19. The
+positive COVID-19 reported cases are as follows:</p>
+<ul>
+  <li>
+    <strong>An individual associated with High School East whose
+    last day on site was 10/19/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Okte Elementary whose
+    last day on site was 10/26/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Karigon Elementary whose
+    last day on site was 10/27/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Karigon Elementary whose
+    last day on site was 10/26/21</strong>
+  </li>
+  <li>
+    <strong>Three individuals associated with Orenda Elementary
+    whose last day on site was 10/22/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Gowana Middle School
+    whose last day on site was 10/22/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Shatekon Elementary whose
+    last day on site 10/27/21</strong>
+  </li>
+  <li>
+    <strong>An individual associated with Orenda Elementary whose
+    last day on site was 10/27/21</strong>
+  </li>
+</ul>
+<p>We appreciate the support of parents, staff and our students as
+we work hard continuing to put COVID in the rearview mirror. We
+encourage parents to get students 12+ in age vaccinated and will
+help facilitate opportunities to do so.</p>
+<p>Thank you again for your commitment to keeping our community
+safe.</p>
+<hr />
+<p>&nbsp;</p>
+<center><font face="arial" color="#000000" size="1">Please do not respond via the email client Reply button. Your response to the Campus Notification will not be delivered to the person who originated this message</font></center>
+<p>&nbsp;</p></body></html>
