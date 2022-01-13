@@ -41,12 +41,12 @@ class ShenCovidTracker:
             'Arongen':'Arongen Elementary',
             'Okte':'Okte Elementary'}
 
-    def download_news_data(self):
+    def download_new_data(self):
         self.links = []
         self.downloaded_dates = set()
         self.find_already_downloaded_dates()
         self.get_covid_links()
-        self.load_covid_data()
+        self.load_covid_data_from_links()
 
     def find_already_downloaded_dates(self):
         # find all the .eml and .txt files we already have
@@ -74,7 +74,7 @@ class ShenCovidTracker:
             fout.write(li.text+"\n")
         fout.close()
 
-    def load_covid_data(self):
+    def load_covid_data_from_links(self):
         downloaded = False
         for l in self.links:
             if l[-1] == "/":
@@ -115,7 +115,7 @@ class ShenCovidTracker:
         sys.stdout.flush()
         plt.show()
 
-    def load_local_files(self):
+    def load_data_from_local_files(self):
         self.columns = []
         self.data = {}
 
@@ -185,6 +185,6 @@ class ShenCovidTracker:
             self.data[date] = daily_count
 
 shen = ShenCovidTracker('https://www.shenet.org/news/')
-shen.download_news_data()
-shen.load_local_files()
+shen.download_new_data()
+shen.load_data_from_local_files()
 shen.plot()
