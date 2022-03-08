@@ -8,15 +8,17 @@ import email
 from word2number import w2n
 import pandas
 from email import policy
+import re
+import numpy as np
 
 class ShenCovidTracker:
-    def __init__(self, url):
-        self.newsurl = url
+    def __init__(self):
         self.headers = {'user-agent': 'Mozilla/5.0'
                         +' (Windows NT 10.0; Win64; x64)'+
                         ' AppleWebKit/537.36 (KHTML, like Gecko)'+
                         ' Chrome/86.0.4240.75 Safari/537.36'}
         self.covid_places = {
+            'Aquatics Center': "Aquatics Center",
             'Transportation': "Transportation Department",
             'Information': "Information Department",
             'Koda':'Koda middle',
@@ -80,8 +82,13 @@ class ShenCovidTracker:
             if l[-1] == "/":
                 l = l[:-1]
             s = l.split('/')[-1]
-            if '-notification-of' in s:
-                date = s.partition("-notification")[0]
+            if '-notification' in s:
+                if '-daily-notification' in s:
+                    date = s.partition("-daily-notification")[0]
+                else:
+                    date = s.partition("-notification")[0]
+                if '2-19-22-2-28-22-notification-of-positive-cases-over-february-break-more-info' in s:
+                    date = "2-28-22"
                 if("2021" in date):
                     continue
                 date_object = datetime.strptime(date, "%m-%d-%y")
@@ -99,19 +106,23 @@ class ShenCovidTracker:
             print("no new data on news site")
 
     def get_covid_links(self):
-        rsp = requests.get('https://www.shenet.org/news/',headers=self.headers)
+        url = 'https://www.shenet.org/news/'
+        print("Look for new data on ", url)
+        rsp = requests.get(url,headers=self.headers)
         soup = BeautifulSoup(rsp.content, 'html.parser')
         for li in soup.find_all("li"):
-            if "Notification of Positive" in li.text:
+            if re.search("Notification.*of Positive", li.text):
                 for a in li.find_all("a"):
                     self.links.append(a.get("href"))
 
     def plot(self):
-        print(self.df)
         fig, ax = plt.subplots()
+
         self.df.plot(kind = 'bar',stacked=True, ax=ax)
         ax.set_xticklabels([x.strftime("%m-%d-%y") for x in self.df.index],
-                           rotation=45)
+                           rotation=90,fontsize=8)
+        ax.plot(range(len(self.df)), self.df.sum(1), label='Total')
+        ax.legend()
         sys.stdout.flush()
         plt.show()
 
@@ -123,7 +134,16 @@ class ShenCovidTracker:
         self.load_txt_files()
         self.df = pandas.DataFrame(data=self.data, columns=self.columns,
                                    index=self.covid_places.values())
+        # sort the dates
         self.df = self.df.reindex(sorted(self.df.columns), axis=1)
+        # fill in missing dates with 0 values for counts
+        # get a start and end date from the sorted dates
+        date1 = self.df.columns[0]
+        date2 = self.df.columns[-1]
+        # generate a range of dates from start to end
+        r = pandas.date_range(start=date1,
+                              end=date2, freq='D',closed=None)
+        self.df = self.df.reindex(r, fill_value=0, axis=1)
         self.df = self.df.transpose()
 
     def get_place_name(self, text):
@@ -184,7 +204,7 @@ class ShenCovidTracker:
                 daily_count[place] = daily_count[place] + count
             self.data[date] = daily_count
 
-shen = ShenCovidTracker('https://www.shenet.org/news/')
+shen = ShenCovidTracker()
 shen.download_new_data()
 shen.load_data_from_local_files()
 shen.plot()
